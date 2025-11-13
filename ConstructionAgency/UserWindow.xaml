@@ -1,0 +1,72 @@
+<Window x:Class="ConstructionAgency.UserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Проекты" Height="600" Width="920" WindowStartupLocation="CenterScreen">
+    <Grid Margin="12">
+        <TabControl>
+            <!-- Каталог проектов -->
+            <TabItem Header="Каталог">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
+                        <TextBlock Text="Категория:" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                        <ComboBox x:Name="FilterCategoryBox" Width="220"
+                                  DisplayMemberPath="Name" SelectedValuePath="CategoryId"
+                                  SelectionChanged="FilterOrSort_Changed"/>
+
+                        <TextBlock Text="  Поиск:" VerticalAlignment="Center" Margin="8,0,6,0"/>
+                        <TextBox x:Name="SearchBox" Width="220" TextChanged="FilterOrSort_Changed"/>
+
+                        <TextBlock Text="  Сортировка:" VerticalAlignment="Center" Margin="8,0,6,0"/>
+                        <ComboBox x:Name="SortBox" Width="210" SelectionChanged="FilterOrSort_Changed">
+                            <ComboBoxItem Content="Дата: новые → старые" Tag="CreatedAt DESC"/>
+                            <ComboBoxItem Content="Дата: старые → новые" Tag="CreatedAt ASC"/>
+                            <ComboBoxItem Content="Название: A → Z"      Tag="Title ASC"/>
+                            <ComboBoxItem Content="Название: Z → A"      Tag="Title DESC"/>
+                        </ComboBox>
+
+                        <Button Content="Сбросить" Margin="8,0,0,0" Click="ResetFilter_Click"/>
+                        <Button Content="Подробнее" Margin="12,0,0,0" Click="OpenDetails_Click"/>
+                        <Button Content="В избранное" Margin="6,0,0,0" Click="AddFavorite_Click"/>
+                        <Button Content="Удалить из избранного" Margin="6,0,0,0" Click="RemoveFavorite_Click"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="UserProjectsGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              SelectionMode="Single"
+                              MouseDoubleClick="UserProjectsGrid_MouseDoubleClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"        Binding="{Binding ProjectId}" Width="60"/>
+                            <DataGridTextColumn Header="Title"     Binding="{Binding Title}"     Width="*"/>
+                            <DataGridTextColumn Header="CategoryId" Binding="{Binding CategoryId}" Width="120"/>
+                            <DataGridTextColumn Header="Status"    Binding="{Binding Status}"    Width="140"/>
+                            <DataGridTextColumn Header="CreatedAt" Binding="{Binding CreatedAt}" Width="160"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
+
+            <!-- Избранное -->
+            <TabItem Header="Мои избранные">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
+                        <Button Content="Открыть" Click="OpenFavoriteDetails_Click"/>
+                        <Button Content="Удалить из избранного" Margin="8,0,0,0" Click="RemoveFavoriteFromTab_Click"/>
+                    </StackPanel>
+                    <DataGrid x:Name="FavoritesGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"        Binding="{Binding ProjectId}" Width="60"/>
+                            <DataGridTextColumn Header="Title"     Binding="{Binding Title}"     Width="*"/>
+                            <DataGridTextColumn Header="CategoryId" Binding="{Binding CategoryId}" Width="120"/>
+                            <DataGridTextColumn Header="Status"    Binding="{Binding Status}"    Width="140"/>
+                            <DataGridTextColumn Header="CreatedAt" Binding="{Binding CreatedAt}" Width="160"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

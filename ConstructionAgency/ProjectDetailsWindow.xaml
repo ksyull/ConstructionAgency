@@ -1,0 +1,21 @@
+<Window x:Class="ConstructionAgency.ProjectDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Детали проекта" Height="420" Width="640" WindowStartupLocation="CenterOwner">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TitleText" FontSize="18" FontWeight="Bold" TextWrapping="Wrap"/>
+        <TextBlock Grid.Row="1" x:Name="MetaText" Margin="0,6,0,0" Foreground="Gray"/>
+        <TextBlock Grid.Row="2" x:Name="StatusText" Margin="0,6,0,0"/>
+        <TextBlock Grid.Row="3" x:Name="CreatedText" Margin="0,6,0,8"/>
+        <ScrollViewer Grid.Row="4" VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="DescText" TextWrapping="Wrap"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
