@@ -1,7 +1,8 @@
 <Window x:Class="ConstructionAgency.ProjectDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Детали проекта" Height="420" Width="640" WindowStartupLocation="CenterOwner">
+        Title="Детали проекта" Height="420" Width="640" WindowStartupLocation="CenterOwner"
+        Background="Lavender">
     <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
