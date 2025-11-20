@@ -1,7 +1,10 @@
 <Window x:Class="ConstructionAgency.AdminWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Админ-панель" Height="540" Width="880" WindowStartupLocation="CenterScreen">
+        Title="Админ-панель" Height="540" Width="880" WindowStartupLocation="CenterScreen"
+        Background="LightPink"
+        BorderBrush="Maroon"
+        BorderThickness="2">
     <Grid Margin="12">
         <TabControl>
             <!-- Пользователи -->
@@ -54,7 +57,7 @@
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Описание:" VerticalAlignment="Top" Margin="0,6,0,0"/>
                             <TextBox   Grid.Row="1" Grid.Column="1" x:Name="ProjectDescriptionBox" Margin="6,6,8,0"
                                        AcceptsReturn="True" Height="60" TextWrapping="Wrap"/>
-                            
+
                             <TextBlock Grid.Row="1" Grid.Column="2" Text="Статус:" VerticalAlignment="Center" Margin="0,6,0,0"/>
                             <ComboBox  Grid.Row="1" Grid.Column="3" x:Name="ProjectStatusBox" Margin="0,6,0,0">
                                 <ComboBoxItem Content="Draft"/>
